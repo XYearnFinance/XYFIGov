@@ -617,8 +617,8 @@ contract YearnGovernance is LPTokenWrapper, IRewardDistributionRecipient {
 
     function seize(IERC20 _token, uint amount) external {
         require(msg.sender == governance, "!governance");
-        require(_token != YFIM, "YFIM");
-        require(_token != vote, "YFIM");
+        require(_token != XYFI, "XYFI");
+        require(_token != vote, "XYFI");
         _token.safeTransfer(governance, amount);
     }
 
@@ -718,7 +718,7 @@ contract YearnGovernance is LPTokenWrapper, IRewardDistributionRecipient {
 
     /* Default rewards contract */
 
-    IERC20 public YFIM = IERC20(0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e);
+    IERC20 public XYFI = IERC20(0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e);
 
     uint256 public constant DURATION = 7 days;
 
@@ -795,7 +795,7 @@ contract YearnGovernance is LPTokenWrapper, IRewardDistributionRecipient {
         uint256 reward = earned(msg.sender);
         if (reward > 0) {
             rewards[msg.sender] = 0;
-            YFIM.safeTransfer(msg.sender, reward);
+            XYFI.safeTransfer(msg.sender, reward);
             emit RewardPaid(msg.sender, reward);
         }
     }
